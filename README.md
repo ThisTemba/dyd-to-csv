@@ -22,3 +22,7 @@ Parse DYD is a script that converts `.dyd` files into `.csv` files. It is writte
 1. Clone the repository
 2. Edit the `parseDyd.js` file
 3. Package the script using `pkg parseDyd.js` (you will need to install [`pkg`](https://www.npmjs.com/package/pkg) first)
+
+### Dev Notes
+
+* This has only been tested on one file at the time of writing
