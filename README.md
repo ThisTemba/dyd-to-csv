@@ -9,6 +9,7 @@ Parse DYD is a script that converts `.dyd` files into `.csv` files. It is writte
 3. Copy the `.dyd` file you want to convert to the same folder and rename it `input.dyd`.
 4. Run the script by double clicking the exectuable file. The `output.csv` file will be added to the folder.
 5. Optional: Move the output file to the desired directory on your system and delete the folder with the script and the input file.
+
 ![ezgif-1-d6bc7018be](https://user-images.githubusercontent.com/36087610/195167992-2802a7e9-fc14-4edb-8275-9f04dd68a8ca.gif)
 
 
