@@ -104,6 +104,17 @@ function dydToCsv(inputFilename, outputFilename) {
   fs.writeFileSync(outputFilename, csv, "utf8");
 }
 
-// dyd to chunks to collection to csv
+function findDydFilenames(dir) {
+  const filenames = fs.readdirSync(dir);
+  const dydFilenames = filenames.filter((file) => file.endsWith(".dyd"));
+  return dydFilenames;
+}
 
-dydToCsv("input.dyd", "output.csv");
+// dyd to chunks to collection to csv
+// current folder
+const inputDir = "./";
+const dydFilenames = findDydFilenames(inputDir);
+dydFilenames.forEach((inputFilenames) => {
+  const outputFilename = inputFilenames.replace(".dyd", ".csv");
+  dydToCsv(inputFilenames, outputFilename);
+});
