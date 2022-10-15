@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Parse DYD</title>
+  </head>
   <body>
     <h1>Show File-select Fields</h1>
 
@@ -12,9 +15,19 @@
       <input type="submit" />
     </form>
   </body>
+  <script type="txt/javascript" src="parseDyd.js"></script>
   <script>
     document.getElementById("myfile").addEventListener("change", function () {
       console.log(this.files);
+      // read the uploaded file
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        console.log(e.target.result);
+      };
+      reader.readAsText(this.files[0]).then(function (file) {
+        console.log(file);
+        dydToCollection(file);
+      });
     });
   </script>
 </html>
