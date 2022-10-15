@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parse DYD</title>
+  </head>
+  <body>
+    <h1>Convert DYD to CSV</h1>
+
+    <form action="/action_page.php" enctype="multipart/form-data">
+      <label for="myfile">Select the ".dyd" file you wish to convert:</label>
+      <br />
+      <br />
+      <input type="file" id="myfile" name="myfile" />
+    </form>
+  </body>
+  <script type="text/javascript" src="parseDyd.js"></script>
+  <script>
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      const filename = e.target.filename;
+      const dyd = e.target.result;
+      const collection = dydToCollection(dyd);
+      const csv = collectionToCsv(collection);
+      const blob = new Blob([csv], { type: "text/csv" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename.replace(".dyd", ".csv");
+      a.click();
+    };
+
+    document.getElementById("myfile").addEventListener("change", function () {
+      const file = this.files[0];
+      reader.filename = file.name;
+      reader.readAsText(file);
+    });
+  </script>
+</html>

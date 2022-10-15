@@ -1,5 +1,3 @@
-const fs = require("fs");
-
 function mergeObjects(objectList) {
   const newObject = {};
   objectList.forEach((o) => {
@@ -67,14 +65,14 @@ function chunksToCollection(chunks) {
   });
 }
 
-function dydToChunks(filename) {
-  const dyd = fs.readFileSync(filename, "utf8");
+function dydToChunks(rawData) {
+  const dyd = rawData;
   const chunks = dyd.split("cmpldw").slice(1);
   return chunks;
 }
 
-function dydToCollection(filename) {
-  const chunks = dydToChunks(filename);
+function dydToCollection(dyd) {
+  const chunks = dydToChunks(dyd);
   const collection = chunksToCollection(chunks);
   return collection;
 }
@@ -98,23 +96,8 @@ function transposeCollection(collection) {
   return transposed.slice(1);
 }
 
-function dydToCsv(inputFilename, outputFilename) {
-  const collection = dydToCollection(inputFilename); // a collection is a list of objects
+function dydToCsv(dyd) {
+  const collection = dydToCollection(dyd);
   const csv = collectionToCsv(collection);
-  fs.writeFileSync(outputFilename, csv, "utf8");
+  return csv;
 }
-
-function findDydFilenames(dir) {
-  const filenames = fs.readdirSync(dir);
-  const dydFilenames = filenames.filter((file) => file.endsWith(".dyd"));
-  return dydFilenames;
-}
-
-// dyd to chunks to collection to csv
-// current folder
-const inputDir = "./";
-const dydFilenames = findDydFilenames(inputDir);
-dydFilenames.forEach((inputFilenames) => {
-  const outputFilename = inputFilenames.replace(".dyd", ".csv");
-  dydToCsv(inputFilenames, outputFilename);
-});
