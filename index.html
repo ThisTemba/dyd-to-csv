@@ -4,14 +4,21 @@
     <title>DYD to CSV</title>
   </head>
   <body>
-    <h1>DYD to CSV</h1>
-
-    <form action="/action_page.php" enctype="multipart/form-data">
-      <label for="myfile">Select the ".dyd" file you wish to convert:</label>
-      <br />
-      <br />
-      <input type="file" id="myfile" name="myfile" />
-    </form>
+    <div class="text-center mt-5 align-content-center">
+      <h1>DYD to CSV</h1>
+      <ol>
+        <li>
+          <form action="/action_page.php" enctype="multipart/form-data">
+            <label for="myfile"
+              >Select the ".dyd" file you wish to convert:</label
+            >
+            <input type="file" id="myfile" name="myfile" />
+            <br />
+          </form>
+        </li>
+        <li>The ".csv" file will be downloaded automatically✨</li>
+      </ol>
+    </div>
   </body>
   <script type="text/javascript" src="parseDyd.js"></script>
   <script>
