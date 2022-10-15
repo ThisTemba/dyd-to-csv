@@ -1,6 +1,6 @@
-# Parse DYD
+# DYD to CSV
 
-Parse DYD is a script that converts `.dyd` files into `.csv` files. It is written in JavaScript but can run on any operating system as an executable file.
+DYD to CSV is a script that converts `.dyd` files into `.csv` files. It is written in JavaScript but can run on any operating system as an executable file.
 
 ## Usage
 
